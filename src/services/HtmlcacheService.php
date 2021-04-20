@@ -93,7 +93,7 @@ class HtmlcacheService extends Component
         }
 
         // Skip if system is not on and not in force mode
-        if (!\Craft::$app->getIsSystemOn() && $this->settings->forceOn == false) {
+        if (!\Craft::$app->getIsLive() && $this->settings->forceOn == false) {
             return false;
         }
 
