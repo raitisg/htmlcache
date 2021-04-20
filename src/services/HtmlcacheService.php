@@ -72,11 +72,6 @@ class HtmlcacheService extends Component
      */
     public function canCreateCacheFile()
     {
-        // Skip if it's a preview url
-        if ($this->settings->disablePreviewCache && Craft::$app->getRequest()->getIsPreview()) {
-            return false;
-        }
-
         // Skip if it has a query string and plugin is set to ignore urls with query strings
         if (!$this->settings->queryStringCaching && Craft::$app->getRequest()->getQueryString()) {
             return false;
@@ -108,7 +103,7 @@ class HtmlcacheService extends Component
         }
 
         // Skip if it's a preview request
-        if (\Craft::$app->getRequest()->getIsLivePreview()) {
+        if (\Craft::$app->getRequest()->getIsPreview() || \Craft::$app->getRequest()->getIsLivePreview()) {
             return false;
         }
         // Skip if it's a post request

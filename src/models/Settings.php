@@ -19,13 +19,12 @@ class Settings extends \craft\base\Model
     public $optimizeContent = 0;
     public $cacheDuration = 3600;
     public $purgeCache = 0;
-    public $disablePreviewCache = 1;
     public $excludedUrlPaths = [];
     public $queryStringCaching = false;
 
     public function rules() {
         return [
-            [ ['enableGeneral', 'forceOn', 'optimizeContent', 'purgeCache', 'disablePreviewCache' ], 'boolean' ],
+            [ ['enableGeneral', 'forceOn', 'optimizeContent', 'purgeCache'], 'boolean' ],
             [ ['cacheDuration' ], 'integer' ],
         ];
     }
